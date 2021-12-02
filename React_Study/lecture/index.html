@@ -2,6 +2,7 @@
     <head>
         <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     </head>
     <body>
         <h1>html안에서 자바스크립트 사용하는 법</h1>
@@ -19,9 +20,7 @@
 
         <h1>튜토리얼: 좋아요 버튼</h1>
         <div id="root"></div> <!-- 결과: <div id="root"><button>Like</button></div> -->
-            <script>
-                const e = React.createElement;  // html 태그를 만드는 것
-
+            <script type="text/babel">
                 class LikeButton extends React.Component {
                     // 리액트 안에 컴포넌트가 들어있고, 상속을 해온다. 
                     constructor(props) {
@@ -32,25 +31,17 @@
                     }
 
                     render(){
-                        return e(
-                            'button', 
-                            { onClick: () => { this.setState({ liked: true }) }, type: 'submit' }, 
-                            this.state.liked === true ? 'Liked' : 'Like ',
-                            // 안에 content부분, state가 true라면 안에 있는 글자가 자동으로 liked라고 바뀜
-                        );
-                            // 클릭을 했을 때, 좋아요를 눌렀음으로 바꿔줌 (상태는 바꿈)
-                            // <button onClick="() => { console.log('clicked') }" type="submit">Like</button>
-                            // jQuery일 경우: $('button').text('Liked');
-                    }
+                        return <button 
+                            type="submit" 
+                            onClick={() => { this.setState({ liked: true })}}
+                            >{this.state.liked === true ? 'Liked' : 'Like'}</button>
+                        }
                  }
                                
             </script>
-            <script>
-                // react dom이 react로 어떻게 컴포넌트를 만들겠다 해놓은 것을 
-                // 웹에다가 실제로 렌더링을 해주는 것(화면에 실제로 반영해줌.)
-                ReactDOM.render(e(LikeButton), document.querySelector('#root'));
-                // e(클래스 이름), LikeButton을 실제로 Dom에다가 붙이겠다,
-                // document.querySelector('#root') 에다가.
+            <script type="text/babel">
+                ReactDOM.render(<div><LikeButton /><LikeButton /><LikeButton /></div>, document.querySelector('#root'));
+                // 컴포넌트 복사
             </script>
     </body>
 </html>
