@@ -13,32 +13,47 @@
                 class GuGuDan extends React.Component {
                     constructor(props) {
                         super(props);
+                        // 변할 것들을 다 state로 만든다.
                         this.state = {
-                            // 바뀌는 부분들 속성으로 추가
                             first: Math.ceil(Math.random() * 9 ),
-                            // 임의의 아무 숫자나 만들기
                             second: Math.ceil(Math.random() * 9 ),
                             value: '',
-                            // 입력창
                             result: '',
-                            // 결과값
                         }; 
                     }
-        
+
+                    onSubmit = (e) => {
+                                e.preventDefault();
+                                if (parseInt(this.state.value) === this.state.first * this.state.second) {
+                                    // 정답일 때에 화면
+                                    this.setState({
+                                        result: '정답',
+                                        first: Math.ceil(Math.random() * 9),
+                                        second: Math.ceil(Math.random() * 9),
+                                        value: '',
+                                    });
+                                } else {
+                                    // 정답이 아닐 때에 화면
+                                    this.setState({
+                                        result: '땡',
+                                        value: '',
+                                    });
+                                }
+                            };
+
+                    onChange = (e) => {
+                        this.setState({ value: e.target.value});
+                    };
+    
                     render() {
-                        // 태그를 넣는 부분
                         return (
                         <div>
                             <div>{this.state.first} 곱하기 {this.state.second}는?</div>
-                            {/* 태그 안에 content에 중괄호를 넣으면 그 안에는 자바스크립트를 쓸 수 있다.
-                                JSX문법에서 싱글 태그는 무조건 닫는 태그를 써줘야한다.*/}
-                            <form>
-                                <input type="number" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value})}/>
-                                {/* input.onchange = function (e) {console.log(e.target.value)}
-                                    입력받는 것 자체를 변하는 상태라고 생각하고 코드를 짬
-                                    state를 바꿀 때는 setstate를 씀
-                                    input에서 change이벤트 발생할 때, onInput이나 onChange를 사용
-                                    화살표 함수(=>)는 function(e)라고 생각하면 됨(정확히 같지는 않다.) */}
+                            <form onSubmit={this.onSubmit}>
+                                {/*폼을 제출할 때 결과값을 제출해줘야함.*/}
+                                <input type="number" value={this.state.value} onChange={this.onChange}/>
+                                {/*state는 수동으로 변경해줄 얘들만 넣어줘야함*/}
+                                {/*onclick, onchange, onsubmit, oninput, onload, onfocus, onblur => 기본 자바스크립트 핸들러*/}
                                 <button>입력!</button> 
                             </form>   
                             <div>{this.state.result}</div> 
@@ -49,9 +64,7 @@
                                
             </script>
             <script type="text/babel">
-                // 화면에 그려주는 역할
                 ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
-                // 컴포넌트 복사
             </script>
     </body>
 </html>
