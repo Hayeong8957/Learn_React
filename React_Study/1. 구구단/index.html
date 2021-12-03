@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>구구단</title>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <h1>구구단</h1>
+        <div id="root"></div>
+            <script type="text/babel">
+                class GuGuDan extends React.Component {
+                    constructor(props) {
+                        super(props);
+                        this.state = {
+                            // 바뀌는 부분들 속성으로 추가
+                            first: Math.ceil(Math.random() * 9 ),
+                            // 임의의 아무 숫자나 만들기
+                            second: Math.ceil(Math.random() * 9 ),
+                            value: '',
+                            // 입력창
+                            result: '',
+                            // 결과값
+                        }; 
+                    }
+        
+                    render() {
+                        // 태그를 넣는 부분
+                        return (
+                        <div>
+                            <div>{this.state.first} 곱하기 {this.state.second}는?</div>
+                            {/* 태그 안에 content에 중괄호를 넣으면 그 안에는 자바스크립트를 쓸 수 있다.
+                                JSX문법에서 싱글 태그는 무조건 닫는 태그를 써줘야한다.*/}
+                            <form>
+                                <input type="number" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value})}/>
+                                {/* input.onchange = function (e) {console.log(e.target.value)}
+                                    입력받는 것 자체를 변하는 상태라고 생각하고 코드를 짬
+                                    state를 바꿀 때는 setstate를 씀
+                                    input에서 change이벤트 발생할 때, onInput이나 onChange를 사용
+                                    화살표 함수(=>)는 function(e)라고 생각하면 됨(정확히 같지는 않다.) */}
+                                <button>입력!</button> 
+                            </form>   
+                            <div>{this.state.result}</div> 
+                        </div> 
+                        );
+                    }
+                }
+                               
+            </script>
+            <script type="text/babel">
+                // 화면에 그려주는 역할
+                ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
+                // 컴포넌트 복사
+            </script>
+    </body>
+</html>
