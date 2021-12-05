@@ -26,38 +26,49 @@
                                 e.preventDefault();
                                 if (parseInt(this.state.value) === this.state.first * this.state.second) {
                                     // 정답일 때에 화면
-                                    this.setState({
-                                        result: '정답',
+                                    this.setState((prevState) => {
+                                        return {
+                                        // 바꾸고 싶은 상태를 입력  
+                                        result: '정답: ' + prevState.value,
                                         first: Math.ceil(Math.random() * 9),
                                         second: Math.ceil(Math.random() * 9),
                                         value: '',
+                                        };
                                     });
+                                    this.input.focus(); // document object model이 선택이 된다.
                                 } else {
                                     // 정답이 아닐 때에 화면
                                     this.setState({
                                         result: '땡',
                                         value: '',
                                     });
+                                    this.input.focus(); 
+                                    // document.querySelector('input').focus() 랑 같은 효과
                                 }
                             };
 
                     onChange = (e) => {
                         this.setState({ value: e.target.value});
                     };
+
+                    input; // 클래스에다가 input선언
+                    onRefInput = (c) => { this.input = c; };
     
                     render() {
                         return (
-                        <div>
+                        <React.Fragment>
                             <div>{this.state.first} 곱하기 {this.state.second}는?</div>
                             <form onSubmit={this.onSubmit}>
-                                {/*폼을 제출할 때 결과값을 제출해줘야함.*/}
-                                <input type="number" value={this.state.value} onChange={this.onChange}/>
-                                {/*state는 수동으로 변경해줄 얘들만 넣어줘야함*/}
-                                {/*onclick, onchange, onsubmit, oninput, onload, onfocus, onblur => 기본 자바스크립트 핸들러*/}
+                                <input ref={this.onRefInput} type="number" value={this.state.value} onChange={this.onChange}/>
+                                {/*ref => reference (참고, 참조)
+                                    함수는 아무거나 넣어주면 된다.
+                                    input이라는 변수는 위에 선언
+                                    this.input에다가 input태그를 실제로 넣어줬기 때문에
+                                    dom에 직접 접근할 수 있게 된다.*/}
                                 <button>입력!</button> 
                             </form>   
                             <div>{this.state.result}</div> 
-                        </div> 
+                        </React.Fragment> 
                         );
                     }
                 }
