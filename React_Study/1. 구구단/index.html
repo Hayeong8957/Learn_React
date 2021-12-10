@@ -2,80 +2,12 @@
     <head>
         <meta charset="UTF-8" />
         <title>구구단</title>
-        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     </head>
     <body>
-        <h1>구구단</h1>
         <div id="root"></div>
-            <script type="text/babel">
-                class GuGuDan extends React.Component {
-                    constructor(props) {
-                        super(props);
-                        // 변할 것들을 다 state로 만든다.
-                        this.state = {
-                            first: Math.ceil(Math.random() * 9 ),
-                            second: Math.ceil(Math.random() * 9 ),
-                            value: '',
-                            result: '',
-                        }; 
-                    }
-
-                    onSubmit = (e) => {
-                                e.preventDefault();
-                                if (parseInt(this.state.value) === this.state.first * this.state.second) {
-                                    // 정답일 때에 화면
-                                    this.setState((prevState) => {
-                                        return {
-                                        // 바꾸고 싶은 상태를 입력  
-                                        result: '정답: ' + prevState.value,
-                                        first: Math.ceil(Math.random() * 9),
-                                        second: Math.ceil(Math.random() * 9),
-                                        value: '',
-                                        };
-                                    });
-                                    this.input.focus(); // document object model이 선택이 된다.
-                                } else {
-                                    // 정답이 아닐 때에 화면
-                                    this.setState({
-                                        result: '땡',
-                                        value: '',
-                                    });
-                                    this.input.focus(); 
-                                    // document.querySelector('input').focus() 랑 같은 효과
-                                }
-                            };
-
-                    onChange = (e) => {
-                        this.setState({ value: e.target.value});
-                    };
-
-                    input; // 클래스에다가 input선언
-                    onRefInput = (c) => { this.input = c; };
-    
-                    render() {
-                        return (
-                        <React.Fragment>
-                            <div>{this.state.first} 곱하기 {this.state.second}는?</div>
-                            <form onSubmit={this.onSubmit}>
-                                <input ref={this.onRefInput} type="number" value={this.state.value} onChange={this.onChange}/>
-                                {/*ref => reference (참고, 참조)
-                                    함수는 아무거나 넣어주면 된다.
-                                    input이라는 변수는 위에 선언
-                                    this.input에다가 input태그를 실제로 넣어줬기 때문에
-                                    dom에 직접 접근할 수 있게 된다.*/}
-                                <button>입력!</button> 
-                            </form>   
-                            <div>{this.state.result}</div> 
-                        </React.Fragment> 
-                        );
-                    }
-                }
+            <script src = "./dist/app.js">
+  
                                
-            </script>
-            <script type="text/babel">
-                ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
             </script>
     </body>
 </html>
