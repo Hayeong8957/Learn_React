@@ -1,17 +1,53 @@
 const React = require('react');
-// 분리할 때마다 npm에서 react를 불러와야한다.
 const { Component } = React;
 
 class WordRelay extends Component {
-    state = {
-        text: 'Hello, webpack',
+  state = {
+    word: '신하영',
+    value: '',
+    result: '',
+  };
 
-    };
-
-    render() {
-        return <h1>{this.state.text}</h1>
-
+  onSubmitForm = (e) => {
+    e.preventDefault();
+    if (this.state.word[this.state.word.length - 1] === this.state.value[0]) {
+      this.setState({
+        result: '딩동댕',
+        word: this.state.value,
+        value: '',
+      });
+      this.input.focus();
+    } else {
+      this.setState({
+        result: '땡',
+        value: '',
+      });
+      this.input.focus();
     }
+  };
+
+  onChangeInput = (e) => {
+    this.setState({ value: e.target.value });
+  };
+
+  input; // this.input을 생성
+
+  onRefInput = (c) => {
+    this.input = c;
+  };
+
+  render() {
+    return (
+      <>
+        <div>{this.state.word}</div>
+        <form onSubmit={this.onSubmitForm}>
+          <input ref={this.onRefInput} value={this.state.value} onChange={this.onChangeInput} />
+          <button>클릭!!!</button>
+        </form>
+        <div>{this.state.result}</div>
+      </>
+    );
+  }
 }
 
 module.exports = WordRelay;
