@@ -1,4 +1,5 @@
 const path = require('path');
+const { webpack } = require('webpack');
 
 module.exports = {
     mode: 'development',
@@ -10,16 +11,29 @@ module.exports = {
     entry: {
         app: './client',
     },
+    // entry에 들어간 파일에 바벨로더 설정
     module: {
         rules: [{
             test: /\.jsx?$/, 
             loader: 'babel-loader',
             options: {
-                presets: ['@babel/preset-env', '@babel/preset-react'],
+                presets: [
+                    ['@babel/preset-env', {
+                        targets: {
+                            browsers: ['> 5% in KR', 'last 2 chrome versions'],
+                        },
+                        debug: true, 
+                    }],
+                    '@babel/preset-react'
+                ],
                 plugins: [],
             },
         }],
     },
+    plugins: [
+
+    ],
+
     output: {
         filename: 'app.js',
         path: path.join(__dirname, 'dist'),
