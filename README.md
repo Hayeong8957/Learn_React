@@ -12,6 +12,11 @@
   5. 가위바위보
   6. 로또
   7. lecture
+ 
+---
+# ✍ Directory name: youtube-clone
+- 모각코 2021년 12월 과정 리액트 기초
+- 유튜브 클론 과제 
 
 ---
 # 📌 webpack 설정 cli명령어
