@@ -15,7 +15,7 @@ function Layout({ children, activeMenu }) {
       <Header onChangeOpen={onChangeOpen} />
       <div className={styles.layout}>
         <Menu activeMenu={activeMenu} open={open} />
-        <div className={styles.contents}>{children}</div>
+        <div className={open ? styles.contents : styles.whole}>{children}</div>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import { MdSubscriptions } from "react-icons/md";
 function Menu({ activeMenu, open }) {
   if (open) {
     return (
-      <div className={styles.menu}>
+      <div className={open ? styles.menu : styles.close}>
         <Link
           to="/"
           className={activeMenu === "home" ? styles.focused : styles.link}

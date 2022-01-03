@@ -5,6 +5,10 @@
   padding: 12px 12px 12px 0;
   box-sizing: border-box;
 }
+.close {
+  display: none;
+}
+
 .link {
   display: flex;
   height: 40px;
