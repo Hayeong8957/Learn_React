@@ -15,9 +15,9 @@ function ProcessViewCount(viewCount) {
   }
 }
 
-function ProcessUploadDate(UploadDate) {
-  const date = moment("2021-09-16T13:15:02");
-  return `${UploadDate.from(date)}`;
+function ProcessUploadDate(date) {
+  const standard = "2021-09-16T13:15:20";
+  return moment(date).from(standard);
 }
 
 export { ProcessViewCount, ProcessUploadDate };

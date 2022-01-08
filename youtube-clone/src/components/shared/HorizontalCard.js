@@ -14,7 +14,7 @@ function HorizontalCard({ data }) {
           alt={`${data.title}의 썸네일`}
         />
         <div className={styles.info}>
-          <div className={styles.title}>{data.title}</div>
+          <div className={styles.title}>{ProcessUploadDate(data.date)}</div>
           <div className={styles.meta}>
             <a
               href={`https://www.youtube.com/channel/${data.channelId}`}
