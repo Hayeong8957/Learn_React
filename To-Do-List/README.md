@@ -34,3 +34,5 @@ https://react.vlpt.us/mashup-todolist/01-create-components.html
   버튼을 다시 누르면 폼이 사라짐
 
 ## 2. Context API를 활용한 상태 관리
+<p align="center"><img width="50%" height="50%" src="https://user-images.githubusercontent.com/70371342/148914134-d56a7bb8-ced0-4d6a-9bd7-e21af67603e9.png" /></p>
+
