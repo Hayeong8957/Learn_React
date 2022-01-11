@@ -58,4 +58,4 @@ https://react.vlpt.us/mashup-todolist/01-create-components.html
 
 ### 4. nextId값 관리하기
 
-- nextId가 의미하는 값은 새로운 항목을 추가할 때 사용할 고유 ID임 (useRef를 사용하여 관리)
+- `nextId`가 의미하는 값은 새로운 항목을 추가할 때 사용할 고유 ID임 (`useRef`를 사용하여 관리)
