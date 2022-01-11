@@ -1,7 +1,7 @@
-// 각 할 일 항목들을 보여줌
 import React from "react";
 import styled, { css } from "styled-components";
 import { MdDone, MdDelete } from "react-icons/md";
+import { useTodoDispatch } from "../TodoContext";
 
 const Remove = styled.div`
   display: flex;
@@ -13,13 +13,9 @@ const Remove = styled.div`
   &:hover {
     color: #ff6b6b;
   }
-  display: none;
+  opacity: 0;
 `;
 
-/**
- * Component Selector
- * TodoItemBlock위에 커서가 있을 때,
- * Remove컴포넌트를 보여주라 */
 const TodoItemBlock = styled.div`
   display: flex;
   align-items: center;
@@ -27,15 +23,11 @@ const TodoItemBlock = styled.div`
   padding-bottom: 12px;
   &: hover {
     ${Remove} {
-      display: initial;
+      opacity: 1;
     }
   }
 `;
 
-/**
- * 가변 스타일링
- * React컴포넌트에 넘어온 props에 따라 다른 스타일 적용
- */
 const CheckCircle = styled.div`
   width: 32px;
   height: 32px;
@@ -67,15 +59,20 @@ const Text = styled.div`
 `;
 
 function TodoItem({ id, done, text }) {
+  const dispatch = useTodoDispatch();
+  const onToggle = () => dispatch({ type: "TOGGLE", id });
+  const onRemove = () => dispatch({ type: "REMOVE", id });
   return (
     <TodoItemBlock>
-      <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
+      <CheckCircle done={done} onClick={onToggle}>
+        {done && <MdDone />}
+      </CheckCircle>
       <Text done={done}>{text}</Text>
-      <Remove>
+      <Remove onClick={onRemove}>
         <MdDelete />
       </Remove>
     </TodoItemBlock>
   );
 }
 
-export default TodoItem;
+export default React.memo(TodoItem);
