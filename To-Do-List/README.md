@@ -2,6 +2,8 @@
 
 https://react.vlpt.us/mashup-todolist/01-create-components.html
 
+<br />
+
 ## 1. 컴포넌트 만들기: 만들어야 할 컴포넌트
 
 ### TodoTemplate
@@ -37,6 +39,8 @@ https://react.vlpt.us/mashup-todolist/01-create-components.html
   -> 이 값이 true일 때는 아이콘을 45도 돌려서 X모양이 보여지게 함
   -> 버튼 색상을 빨간색으로 바꿔줌
   -> 할 일을 입력 할 수 있는 폼도 보여줌.
+  
+<br/>
 
 ## 2. Context API를 활용한 상태 관리
 
@@ -64,6 +68,8 @@ https://react.vlpt.us/mashup-todolist/01-create-components.html
 ### 4) nextId값 관리하기
 
 - `nextId`가 의미하는 값은 새로운 항목을 추가할 때 사용할 고유 ID임 (`useRef`를 사용하여 관리)
+  
+<br/>
 
 ## 3. 기능 구현하기
 
