@@ -1,6 +1,7 @@
 // 오늘의 날짜, 요일, 남은 할 일 개수
 import React from "react";
 import styled from "styled-components";
+import { useTodoState } from "../TodoContext";
 
 const TodoHeadBlock = styled.div`
   padding-top: 48px;
@@ -30,10 +31,12 @@ const TodoHeadBlock = styled.div`
 `;
 
 function TodoHead() {
+  const todos = useTodoState();
+  console.log(todos);
   return (
     <TodoHeadBlock>
-      <h1>2022년 01월 10일</h1>
-      <div className="day">월요일</div>
+      <h1>2022년 01월 11일</h1>
+      <div className="day">화요일</div>
       <div className="tasks-left">할 일 3개 남음</div>
     </TodoHeadBlock>
   );
