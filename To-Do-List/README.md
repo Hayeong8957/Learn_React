@@ -2,7 +2,7 @@
 
 https://react.vlpt.us/mashup-todolist/01-create-components.html
 
-## 만들어야 할 컴포넌트
+## 1. 컴포넌트 만들기: 만들어야 할 컴포넌트
 
 ### TodoTemplate
 
@@ -32,3 +32,5 @@ https://react.vlpt.us/mashup-todolist/01-create-components.html
 - TodoTemplate의 하단부에 초록색 원 버튼을 렌더링하고
   이를 클릭하면 할 일을 입력할 수 있는 폼이 나타남.
   버튼을 다시 누르면 폼이 사라짐
+
+## 2. Context API를 활용한 상태 관리
