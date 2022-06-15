@@ -14,16 +14,21 @@
   7. lecture
  
 ---
-# ✍ Directory name: youtube-clone
-- 모각코 2021년 12월 과정 리액트 기초
-- 유튜브 클론 과제 
-
----
 # ✍ Directory name: To-Do-List
 - 벨로퍼트와 함께하는 모던 리액트
 - 3장. 멋진 투두리스트 만들기
 - https://react.vlpt.us/mashup-todolist/01-create-components.html
 ---
+# ✍ Directory name: egoing-2022
+- React 2022 개정판 - 생활코딩
+- https://www.youtube.com/playlist?list=PLuHgQVnccGMCOGstdDZvH41x0Vtvwyxu7
+---
+# ✍ Directory name: youtube-clone
+- 모각코 2021년 12월 과정 리액트 기초
+- 유튜브 클론 과제 
+
+---
+
 # 📌 webpack 설정 cli명령어
 ```
 npm init
